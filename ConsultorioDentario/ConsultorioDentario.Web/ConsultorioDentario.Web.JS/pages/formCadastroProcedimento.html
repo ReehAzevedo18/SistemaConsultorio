@@ -1,0 +1,212 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <link rel="stylesheet" href="../style.css">
+    
+        <title>R.R Dentistas</title>
+    </head>
+    <body>
+        <row>
+            <!-- Menu -->
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <a class="navbar-brand" href="#">
+                    <img src="../img/dentist.png" width="45" height="45" alt="" loading="lazy">
+                  </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+              
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                      <a class="nav-link" href="../index.html">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Cadastro
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <a class="dropdown-item" href="formCadastroPaciente.html">Paciente</a>
+                          <a class="dropdown-item" href="formCadastroDentista.html">Dentista</a>
+                          <a class="dropdown-item" href="formCadastroProcedimento.html">Procedimento</a>
+                        </div>
+                      </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html#Agendamento">Agendamento</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="../index.html#Consulta">Consulta</a>
+                    </li>
+                  </ul>
+                </div>
+            </nav>
+            <!-- Fim do menu -->
+
+            <div class="container-fluid bg-info" id="container-home">
+                <div class="center">
+                    <header>
+                        <h2 class="display-3">R.R Dentistas</h2>
+                        <p class="lead">
+                            Consultório Odontológico
+                          </p>
+                      </header>
+                </div>
+            </div>
+        </row>
+      <row>
+          <div class="container-fluid bg-white" id="container-form">
+            <div class="row">
+              <div class="col-12 text-center">
+                <h1 class="display-4 text-center mt-2">Procedimento</h1><hr>
+              </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-6 mt-2">
+                    <form>
+                        <div class="form-group">
+                          <label>Procedimento</label>
+                          <input type="nome" class="form-control" id="nome">
+                          <small id="nome" class="form-text text-muted">Preencha o nome completo do procedimento.</small>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label>Duração</label>
+                              <input type="time" class="form-control" id="duracao">
+                            </div>
+                            <div class="col">
+                                <label>Valor</label>
+                              <input type="number" class="form-control" id="valor">
+                            </div>
+                        </div>
+                        <br>
+                        <button type="button" class="btn btn-danger btn-lg float-right ml-2">Limpar</button>
+                        <button type="button" class="btn btn-info btn-lg float-right">Salvar</button><br><br>
+                    </form>
+                </div>
+               
+                <div class="col-6 mt-2">
+                    <table class="table">
+                        <thead class="thead-dark">
+                          <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Procedimento</th>
+                            <th scope="col">Valor</th>
+                            <th scope="col">Ações</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>
+                                <button type="button" class="btn btn-info btn-sm">Editar</button>
+                                <button type="button" class="btn btn-danger btn-sm">Excluir</button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+          </div>
+      </row>
+
+        <row>
+            <div class="container-fluid bg-info" id="container-form">
+                <!-- Footer -->
+      <footer class="page-footer font-small stylish-color-dark pt-4">
+      
+        <!-- Footer Links -->
+        <div class="container text-center text-md-left">
+      
+          <!-- Grid row -->
+          <div class="row">
+      
+            <!-- Grid column -->
+            <div class="col-md-4 mx-auto">
+              <img src="../img/dentist.png" width="150" height="150" loading="lazy">
+            </div>
+            <!-- Grid column -->
+      
+            <hr class="clearfix w-100 d-md-none">
+      
+            <!-- Grid column -->
+            <div class="col-md-2 mx-auto">
+      
+              <!-- Links -->
+              <h5 class="font-weight-bold text-uppercase mt-3 mb-4 tex-uppercase text-footer">Início</h5>
+      
+              <ul class="list-unstyled">
+                <li>
+                  <a href="../index.html" class="text-footer">Home</a>
+                </li>
+                <li>
+                  <a href="../index.html#Agendamento" class="text-footer">Agendamento</a>
+                </li>
+               </ul>
+      
+            </div>
+            <!-- Grid column -->
+      
+            <hr class="clearfix w-100 d-md-none">
+      
+            <!-- Grid column -->
+            <div class="col-md-2 mx-auto">
+      
+              <!-- Links -->
+              <h5 class="font-weight-bold text-uppercase mt-3 mb-4 text-uppercase text-footer">Suporte</h5>
+      
+              <ul class="list-unstyled">
+                <li>
+                  <a href="#!" class="text-footer">E-mail</a>
+                </li>
+                <li>
+                  <a href="#!" class="text-footer">Telefone</a>
+                </li>
+                <li>
+                  <a href="#!" class="text-footer">Chat</a>
+                </li>
+                
+              </ul>
+      
+            </div>
+            <!-- Grid column -->
+      
+            <hr class="clearfix w-100 d-md-none">
+      
+            <!-- Grid column -->
+            <div class="col-md-2 mx-auto">
+              <img src="../img/whatsapp.png" width="45" height="45" loading="lazy">
+              <img src="../img/facebook.png" width="45" height="45" loading="lazy">
+              <img src="../img/instagram.png" width="45" height="45" loading="lazy">
+            </div>
+            <!-- Grid column -->
+      
+          </div>
+          <!-- Grid row -->
+      
+        </div>
+        <!-- Footer Links -->
+      
+        <hr>
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3 text-footer">© 2020 Copyright:
+          <label class="text-footer"> Renata Azevedo</label>
+        </div>
+        <!-- Copyright -->
+      
+      </footer>
+      <!-- Footer -->
+            </div>
+          </row>
+      
+          
+          <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+          <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+          <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    </body>
+</html>

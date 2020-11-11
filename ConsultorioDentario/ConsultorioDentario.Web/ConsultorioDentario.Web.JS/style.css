@@ -1,0 +1,59 @@
+.selector-for-some-widget {
+    box-sizing: content-box;
+}
+
+.clearbooth{
+    clear: both;
+}
+
+#container-home{
+    height: 300px;
+}
+
+#container-form{
+    height: auto;
+}
+.center {
+    margin: 0 auto;
+    width: auto;
+    height: 300px;
+    padding: 20px;
+    color: white;
+}
+
+header, center {
+  text-align: center;
+  margin: 20px 0;
+  padding: 10px;
+}
+
+#img-agendamento{
+    height: 350px;
+}
+  
+.center-card {
+    margin: 0 auto; 
+    float: none; 
+    margin-bottom: 10px;
+}
+
+.cards{
+    max-width: 15rem;
+    height: 20rem;
+    border-radius: 16px;
+    background-color: #000000;
+}
+
+#img-card{
+   margin-top: -20px;
+   height: 135px;
+   align-items: center;
+}
+
+.text-footer{
+    color: #ffffff;
+}
+
+.row-busca{
+    display: flex;
+}
