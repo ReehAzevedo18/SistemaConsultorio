@@ -45,7 +45,7 @@ namespace ConsultorioDentario.API.Controllers
             }
         }
 
-        [HttpGet("DentistaPorNome/{nomeDentista}")]
+        [HttpGet("DentistaPorNome/{nome}")]
         public IActionResult GetDentistaPorNome(string nome){
              try
             {

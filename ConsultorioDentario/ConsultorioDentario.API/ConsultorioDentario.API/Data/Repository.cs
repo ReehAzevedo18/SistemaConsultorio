@@ -128,21 +128,6 @@ namespace ConsultorioDentario.API.Data
           return query.FirstOrDefault();
         }
 
-        // public Paciente GetProcedimentoPorNome(string nome)
-        // {
-        //     IQueryable<Procedimento> query = _context.Procedimento.Where(p => p.Nome.Contains(nome));
-
-        //     foreach(var q in query){
-        //       if(q.Nome.Contains(nome)){
-        //          query = query;
-        //       }
-                
-        //     }
-        //      return query.FirstOrDefault();
-           
-        // }
-
-        
          public Procedimento[] GetProcedimentos()
         {
           IQueryable<Procedimento> query = _context.Procedimento;
@@ -150,6 +135,18 @@ namespace ConsultorioDentario.API.Data
            query = query.AsNoTracking().OrderBy(a => a.id_procedimento);
 
            return query.ToArray();
+        }
+
+           public Procedimento GetProcedimentoPorNome(string procedimento)
+        {
+            IQueryable<Procedimento> query = _context.Procedimento.Where(p => p.Nome.Contains(procedimento));
+
+
+            foreach(var q in query){
+                q.Nome.Contains(procedimento);
+            }
+             return query.FirstOrDefault();
+           
         }
         #endregion
     

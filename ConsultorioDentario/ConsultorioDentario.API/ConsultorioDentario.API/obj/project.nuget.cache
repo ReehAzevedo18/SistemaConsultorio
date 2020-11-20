@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "dBd8+lBNxzqsQRXb844tI17BPPQwny9Qv+KnqLxQOQIAxJN3AVqqCWFMydaTniRVgv3zcb01g4sa+Azht+oa6Q==",
+  "dgSpecHash": "rDsF/NC0g1U/wbyrGziamUMOA/ZM1gxddegpGwkAOhZ8wQypUUEM8yfa550xBipmi7diH0c0inGG6NNzWksisg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\RenataADMIN\\Desktop\\Softwares Pessoais\\Consultorio\\ConsultorioDentario\\ConsultorioDentario.API\\ConsultorioDentario.API\\ConsultorioDentario.API.csproj",
+  "projectFilePath": "C:\\Users\\RenataADMIN\\Desktop\\Softwares Pessoais\\Consultorio\\SistemaConsultorio\\ConsultorioDentario\\ConsultorioDentario.API\\ConsultorioDentario.API\\ConsultorioDentario.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\RenataADMIN\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\RenataADMIN\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\3.1.0\\microsoft.aspnetcore.jsonpatch.3.1.0.nupkg.sha512",

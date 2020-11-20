@@ -26,7 +26,7 @@ namespace ConsultorioDentario.API.Data
         #region Classe Procedimento
         Procedimento[] GetProcedimentos();
          Procedimento GetProcedimentoPorID(int idProcedimento);
-        //  Procedimento GetProcedimentoPorNome(string nome);
+         Procedimento GetProcedimentoPorNome(string procedimento);
         #endregion
 
         #region Classe Consulta

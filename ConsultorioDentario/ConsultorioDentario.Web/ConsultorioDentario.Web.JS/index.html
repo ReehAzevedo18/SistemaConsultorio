@@ -331,11 +331,11 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <th scope="row">1</th>
-                                        <td>Mark</td>
-                                        <td>333.444.555-09</td>
-                                        <td>345132</td>
-                                        <td>08/10/2020</td>
+                                        <th scope="row" id="tabIdPaciente">1</th>
+                                        <td id="tabNomePaciente" >Mark</td>
+                                        <td id="tabCPFPaciente">333.444.555-09</td>
+                                        <td id="tabNCateira" >345132</td>
+                                        <td id="tabDtCadPaciente">08/10/2020</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -367,7 +367,7 @@
                                 <div class="row">
                                     <div class="col-8" style="display: flex;">
                                         <label>Paciente</label>
-                                        <input type="text" class="form-control" id="nomeP">
+                                        <input type="text" class="form-control" id="paciente">
                                         <input type="text" class="form-control" id="idPaciente" style="width: 60px;" disabled>
                                     </div>
                                     <div class="col-2">
@@ -391,7 +391,7 @@
                                     </div>
                                     <div class="col">
                                         <label>Data de Cadastro</label>
-                                        <input type="date" class="form-control" id="dt_cadastro" disabled>
+                                        <input type="text" class="form-control" id="dt_cadastro" disabled>
                                     </div>
                                 </div>
 
@@ -624,9 +624,9 @@
                             <form id="form-dentista">
                                 <div class="row">
                                     <div class="col-8" style="display: flex;">
-                                        <label>Dentista</label>
-                                        <input type="text" class="form-control" id="dentista">
-                                        <input type="text" class="form-control" id="idDentista" style="width: 60px;" disabled>
+                                        <label>Procedimento</label>
+                                        <input type="text" class="form-control" id="procedimento">
+                                        <input type="text" class="form-control" id="idProcedimento" style="width: 60px;" disabled>
                                     </div>
                                     <div class="col-2">
                                         <button type="button" class="btn btn-info btn-sm" onclick="pesquisarProcedimento()">Pesquisar</button>
@@ -651,7 +651,7 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="limparFormProcedimento()"></button>>Fechar</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="limparFormProcedimento()">Fechar</button>
                 </div>
             </div>
         </div>
@@ -763,6 +763,10 @@
     <!-- Fim do Modal consulta de agendamentos -->
 
     <script type="text/javascript" src="index.js"></script>
+    <script type="text/javascript" src="js/Paciente.js"></script>
+    <script type="text/javascript" src="js/Dentista.js"></script>
+    <script type="text/javascript" src="js/Procedimento.js"></script>
+    <script type="text/javascript" src="js/Agendamento.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>

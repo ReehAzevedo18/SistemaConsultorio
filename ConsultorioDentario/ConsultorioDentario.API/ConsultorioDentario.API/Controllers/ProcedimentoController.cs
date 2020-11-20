@@ -44,21 +44,21 @@ namespace ConsultorioDentario.API.Controllers
             }
         }
 
-        // [HttpGet("ProcedimentoPorNome/{nomeProcedimento}")]
-        // public IActionResult GetProcedimentoPorNome(string nomeProcedimento){
-        //      try
-        //     {
-        //         var result = _repo.GetProcedimentoPorNome(nomeProcedimento);
+        [HttpGet("ProcedimentoPorNome/{procedimento}")]
+        public IActionResult GetProcedimentoPorNome(string procedimento){
+             try
+            {
+                var result = _repo.GetProcedimentoPorNome(procedimento);
                 
-        //         if(result != null)
-        //             return Ok(result);
-        //         return BadRequest("Procedimento não encontrado. Tente novamente!");
+                if(result != null)
+                    return Ok(result);
+                return BadRequest("Procedimento não encontrado. Tente novamente!");
             
-        //     }catch(Exception ex){
+            }catch(Exception ex){
                 
-        //         return BadRequest($"Erro: {ex.Message}");
-        //     }
-        // }
+                return BadRequest($"Erro: {ex.Message}");
+            }
+        }
 
         [HttpPost]
         public IActionResult post(Procedimento procedimento){

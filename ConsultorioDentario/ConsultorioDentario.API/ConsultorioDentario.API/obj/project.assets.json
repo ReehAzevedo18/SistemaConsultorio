@@ -5516,11 +5516,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\RenataADMIN\\Desktop\\Softwares Pessoais\\Consultorio\\ConsultorioDentario\\ConsultorioDentario.API\\ConsultorioDentario.API\\ConsultorioDentario.API.csproj",
+      "projectUniqueName": "C:\\Users\\RenataADMIN\\Desktop\\Softwares Pessoais\\Consultorio\\SistemaConsultorio\\ConsultorioDentario\\ConsultorioDentario.API\\ConsultorioDentario.API\\ConsultorioDentario.API.csproj",
       "projectName": "ConsultorioDentario.API",
-      "projectPath": "C:\\Users\\RenataADMIN\\Desktop\\Softwares Pessoais\\Consultorio\\ConsultorioDentario\\ConsultorioDentario.API\\ConsultorioDentario.API\\ConsultorioDentario.API.csproj",
+      "projectPath": "C:\\Users\\RenataADMIN\\Desktop\\Softwares Pessoais\\Consultorio\\SistemaConsultorio\\ConsultorioDentario\\ConsultorioDentario.API\\ConsultorioDentario.API\\ConsultorioDentario.API.csproj",
       "packagesPath": "C:\\Users\\RenataADMIN\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\RenataADMIN\\Desktop\\Softwares Pessoais\\Consultorio\\ConsultorioDentario\\ConsultorioDentario.API\\ConsultorioDentario.API\\obj\\",
+      "outputPath": "C:\\Users\\RenataADMIN\\Desktop\\Softwares Pessoais\\Consultorio\\SistemaConsultorio\\ConsultorioDentario\\ConsultorioDentario.API\\ConsultorioDentario.API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

@@ -1,3 +1,74 @@
+//CONSULTA DE PACIENTE NA HOME
+//Apenas um
+var idPaciente = document.getElementById("idPaciente");
+var paciente = document.getElementById("paciente");
+var CPF = document.getElementById("CPF");
+var numCarteira = document.getElementById("num_carteirinha");
+var dtNasc = document.getElementById("dt_nascimento");
+var dtCadastro = document.getElementById("dt_cadastro");
+var logradouro = document.getElementById("logradouro");
+var num = document.getElementById("num");
+var complemento = document.getElementById("complemento");
+var bairro = document.getElementById("bairro");
+var cidade = document.getElementById("cidade");
+
+function pesquisarPaciente(){
+    var buscaPaciente = paciente.value;
+    var dataFormatada;
+   $.ajax({
+       type:'GET',
+       url:'http://localhost:5000/api/Paciente/PacientePorNome/'+buscaPaciente,
+       success: function(retorno){
+          idPaciente.value = retorno.id_paciente,
+          paciente.value = retorno.nome,
+          CPF.value = retorno.cpf,
+          numCarteira.value = retorno.numCarteira,
+          dtNasc.value = retorno.dt_nascimento.replace(/(\d*)-(\d*)-(\d*).*/, '$3-$2-$1'),
+          dtCadastro.value = retorno.dt_cadastro.replace(/(\d*)-(\d*)-(\d*).*/, '$3-$2-$1'),
+          logradouro.value = retorno.endereco.logradouro, 
+          num.value = retorno.endereco.num, 
+          complemento.value = retorno.endereco.complemento, 
+          bairro.value = retorno.endereco.bairro, 
+          cidade.value = retorno.endereco.cidade
+       },
+       error: function(erro){
+          alert(erro.responseText);
+       } 
+   });
+   
+}
+
+function limparFormPaciente(){
+   idPaciente.value = "",
+   paciente.value = "",
+   CPF.value = "",
+   numCarteira.value = "",
+   dtNasc.value = "",
+   dtCadastro.value = "",
+   logradouro.value = "", 
+   num.value = "", 
+   complemento.value = "", 
+   bairro.value = "", 
+   cidade.value = ""
+}
+
+function formatarData(){
+    d=new Date(dtCadastro);
+    dt=d.getDate();
+    mn=d.getMonth();
+    mn++;
+    yy=d.getFullYear();
+    dtCadastro.value=dt+"/"+mn+"/"+yy
+}
+
+
+
+
+
+
+
+
+// TELA DE CADASTRO
 //Campos do formulário
 var nomeP = document.getElementById("nome");
 var CPFP = document.getElementById("CPF");
@@ -16,7 +87,6 @@ var nomeTab = document.getElementById("nomeTabela");
 var cpfTab = document.getElementById("cpfTabela");
 
 // Validacao dos formularios
-//Formulário de cadastro
 function validar() {
     var campoMensagem = document.getElementById("mensagem-info");
     if (nome.value == "")
@@ -51,41 +121,6 @@ function gerarNumCarteirinha() {
     nCarteirinha.value = Math.round((10000000 + Math.random() * 99999999));
     // nCarteirinha.value = (Math.random() * 9);
 }
-
-
-//Enviando dados do formulário
-// function pegarDados(){
-//     var formPaciente = {
-//         nome: nome.value,
-//         CPF: CPF.value,
-//         numCarteirinha: nCarteirinha.value,
-//         dtCadastro: dtCadastro.value,
-//         dtNascimento: dtNascimento.value,
-//         Logradouro: logradouro.value,
-//         num: numero.value,
-//         compl: complemento.value,
-//         bairro: bairro.value,
-//         cidade: cidade.value
-//     };
-//     console.log(formPaciente);    
-// }
-
-// function enviarDados(){
-//     const xhr = new XMLHttpRequest();
-//     xhr.open('POST', '/Paciente', true);
-//     xhr.setRequestHeader("Content-type", "application/json");
-    
-//     xhr.onreadystatechange = () =>{
-//         if (xhr.readyState == 4){
-//             if (xhr.status == 200){
-//                 console.log("Enviado com sucesso!", xhr.responseText);
-//             }else{
-//                 console.log(xhr.responseText);
-//             }
-//         }
-//     }
-//     xhr.send(JSON.stringify(formPaciente));
-// }
 
 //Tabela de pacientes
 function preencherClientes(){
@@ -128,25 +163,3 @@ function preencherClientes(){
     });
 
 }
-
-   
-//     // let xhr = new XMLHttpRequest();
-//     // xhr.open('GET', 'https://viacep.com.br/ws/88040400/json');
-//     // xhr.onreadystatechange = () => {
-//     //     if (xhr.readyState == 4){
-//     //         if (xhr.status == 200){
-//     //             preencherTabela(JSON.parse(xhr.responseText));
-            
-//     //         }
-//     //     }
-//     // }
-    // xhr.send();
-
-// function preencherTabela(json){
-//     $('#id').text(json.bairro);
-//     $('#nome').text(json.localidade);
-//     $('#CPF').text(json.logradouro);
-// }
-
-
-//Formulário de consulta
