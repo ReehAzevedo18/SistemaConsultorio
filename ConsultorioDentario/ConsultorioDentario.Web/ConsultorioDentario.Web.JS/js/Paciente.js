@@ -32,11 +32,12 @@ function pesquisarPaciente(){
           cidade.value = retorno.endereco.cidade
        },
        error: function(erro){
-          alert(erro.responseText);
+          alert("Deu erro: "+erro.responseText);
        } 
    });
    
 }
+
 
 function limparFormPaciente(){
    idPaciente.value = "",
@@ -52,6 +53,7 @@ function limparFormPaciente(){
    cidade.value = ""
 }
 
+
 function formatarData(){
     d=new Date(dtCadastro);
     dt=d.getDate();
@@ -62,9 +64,31 @@ function formatarData(){
 }
 
 
+//Tabela de pacientes
+function preencherClientes(){
 
+    $.ajax({
+        type:'GET',
+        url:'http://localhost:5000/api/Paciente',
+        success: function(retorno){
+                for(i=0; i < retorno.length; i++){
+                    var dado = retorno[i];
+                    $("#tabPaciente tbody").append(
+                        "<tr>"+
+                        "<td>"+dado.id_paciente+"</td>"+
+                        "<td>"+dado.nome+"</td>"+
+                        "<td>"+dado.cpf+"</td>"+
+                        "<td>"+dado.numCarteira+"</td>"+
+                        "<td>"+dado.dt_cadastro.replace(/(\d*)-(\d*)-(\d*).*/, '$3-$2-$1')+"</td>"+
+                        +"</tr>");
+                }        
+        },
+        error: function(erro){
+            alert("Deu erro: "+erro.responseText);
+         } 
+    });
 
-
+}
 
 
 
@@ -120,46 +144,4 @@ document.getElementById("dt_cadastro").value = data;
 function gerarNumCarteirinha() {
     nCarteirinha.value = Math.round((10000000 + Math.random() * 99999999));
     // nCarteirinha.value = (Math.random() * 9);
-}
-
-//Tabela de pacientes
-function preencherClientes(){
-    
-    $.ajax({
-        type:'GET',
-        url:'http://localhost:5000/api/Paciente',
-        success: function(retorno){
-           
-            $('#tabPaciente').DataTable({
-                "aaData": retorno,
-                "aoColumns": [
-                    { data: 'id_paciente', defaultContent: '' },
-                    { data: 'nome', defaultContent: '' },
-                    { data: 'cpf', defaultContent: '' }
-                ],
-              });
-
-            for(var i=0; i < retorno.length; i++){
-                      var dados = retorno[i];
-
-                     
-                // $('#tabPaciente').append(
-                //     '<tr><td>'+dados[i].id_paciente+
-                //     '</td><td>'+dados[i].nome+
-                //     '</td><td>'+dados[i].cpf+
-                //     '</td></tr>');
-                //     nomeP.value = dados[2].nome;
-          
-            //     idTab.value = dados.id_paciente;
-            //     nomeTab.value = dados.nome;
-            //     cpfTab.value = dados.cpf;
-            //     // console.log('ID:'+dados.id_paciente + 'Nome:'+dados.nome);
-            }
-            
-           
-
-          
-        }
-    });
-
 }

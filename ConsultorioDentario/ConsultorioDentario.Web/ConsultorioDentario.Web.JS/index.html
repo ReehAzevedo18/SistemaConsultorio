@@ -312,14 +312,14 @@
                     <div class="col">
                         <label class="lead">Pesquisar por:</label>
                         <div class="btn-group" role="group">
-                            <button type="button" class="btn btn-info" onclick="MostrarConteudo('todos-pacientes')">Todos os pacientes</button>
+                            <button type="button" class="btn btn-info" onclick="MostrarConteudo('todos-pacientes');preencherClientes()">Todos os pacientes</button>
                             <button type="button" class="btn btn-info" onclick="MostrarConteudo('apenas-um-paciente')">Apenas um paciente</button>
                         </div>
                     </div>
                     <!-- Todos os pacientes -->
                     <div class="col-12" id="todos-pacientes" style="display: none;">
                         <div class="col mt-2">
-                            <table class="table">
+                            <table class="table" id="tabPaciente">
                                 <thead class="thead-dark">
                                     <tr>
                                         <th scope="col">ID</th>
@@ -330,16 +330,9 @@
                                     </tr>
                                </thead>
                                 <tbody>
-
-                                    <tr>
-                                        <th scope="row" id="tabIdPaciente">1</th>
-                                        <td id="tabNomePaciente" >Mark</td>
-                                        <td id="tabCPFPaciente">333.444.555-09</td>
-                                        <td id="tabNCateira" >345132</td>
-                                        <td id="tabDtCadPaciente">08/10/2020</td>
-                                    </tr>
                                 </tbody>
                             </table>
+                            
                             <nav>
                                 <ul class="pagination pagination-sm justify-content-center">
                                     <li class="page-item disabled">
@@ -456,7 +449,7 @@
                     <!-- Todos os dentistas -->
                     <div class="col-12" id="todos-dentistas" style="display: none;">
                         <div class="col mt-2">
-                            <table class="table">
+                            <table class="table" id="tabDentista">
                                 <thead class="thead-dark">
                                     <tr>
                                         <th scope="col">ID</th>
@@ -466,12 +459,6 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>Mark</td>
-                                        <td>333.444.555-09</td>
-                                        <td>34513200</td>
-                                    </tr>
                                 </tbody>
                             </table>
                             <nav>
@@ -580,7 +567,7 @@
                     <!-- Todos os procedimento -->
                     <div class="col-12" id="todos-procedimentos" style="display: none;">
                         <div class="col mt-2">
-                            <table class="table">
+                            <table class="table" id="tabProcedimento">
                                 <thead class="thead-dark">
                                     <tr>
                                         <th scope="col">ID</th>
@@ -590,12 +577,6 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>Canal</td>
-                                        <td>2h</td>
-                                        <td>300,00</td>
-                                    </tr>
                                 </tbody>
                             </table>
                             <nav>
@@ -768,7 +749,8 @@
     <script type="text/javascript" src="js/Dentista.js"></script>
     <script type="text/javascript" src="js/Procedimento.js"></script>
     <script type="text/javascript" src="js/Agendamento.js"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 
