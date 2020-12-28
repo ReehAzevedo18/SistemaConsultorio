@@ -26,6 +26,7 @@ namespace ConsultorioDentario.API.Controllers
             
 
             }catch(Exception ex){
+                
                 return BadRequest($"Erro: {ex.Message}");   
             }
         }

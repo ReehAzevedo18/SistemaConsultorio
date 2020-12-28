@@ -18,7 +18,7 @@ namespace ConsultorioDentario.API.Data
          #endregion
     
         #region Classe Dentista
-        Dentista[] GetDentistas();
+         Dentista[] GetDentistas();
          Dentista GetDentistaPorID(int idDentista);
          Dentista GetDentistaPorNome(string nome);
         #endregion

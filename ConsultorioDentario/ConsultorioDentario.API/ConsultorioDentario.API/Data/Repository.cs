@@ -78,6 +78,15 @@ namespace ConsultorioDentario.API.Data
         #endregion
 
         #region Dentista
+        public Dentista[] GetDentistas()
+        {
+          IQueryable<Dentista> query = _context.Dentista;
+
+           query = query.AsNoTracking().OrderBy(a => a.id_dentista);
+
+           return query.ToArray();
+        }
+        
         public Dentista GetDentistaPorID(int idDentista)
         {
             IQueryable<Dentista> query = _context.Dentista;
@@ -105,14 +114,7 @@ namespace ConsultorioDentario.API.Data
              return query.FirstOrDefault();
         }
 
-         public Dentista[] GetDentistas()
-        {
-          IQueryable<Dentista> query = _context.Dentista;
-
-           query = query.AsNoTracking().OrderBy(a => a.id_dentista);
-
-           return query.ToArray();
-        }
+         
  
         #endregion
     
