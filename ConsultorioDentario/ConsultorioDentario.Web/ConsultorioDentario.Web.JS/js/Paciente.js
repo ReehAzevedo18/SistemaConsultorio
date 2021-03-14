@@ -12,12 +12,11 @@ var complemento = document.getElementById("complemento");
 var bairro = document.getElementById("bairro");
 var cidade = document.getElementById("cidade");
 
-function pesquisarPaciente(){
+function pesquisarPaciente(paciente){
     var buscaPaciente = paciente.value;
-    var dataFormatada;
    $.ajax({
        type:'GET',
-       url:'http://localhost:5000/api/Paciente/PacientePorNome/'+buscaPaciente,
+       url:'https://localhost:44300/api/Paciente/PacientePorNome/'+buscaPaciente,
        success: function(retorno){
           idPaciente.value = retorno.id_paciente,
           paciente.value = retorno.nome,
@@ -69,7 +68,7 @@ function preencherClientes(){
 
     $.ajax({
         type:'GET',
-        url:'http://localhost:5000/api/Paciente',
+        url:'https://localhost:44300/api/Paciente',
         success: function(retorno){
                 for(i=0; i < retorno.length; i++){
                     var dado = retorno[i];
@@ -90,12 +89,10 @@ function preencherClientes(){
 
 }
 
-
-
 // TELA DE CADASTRO
 //Campos do formulário
 var nomeP = document.getElementById("nome");
-var CPFP = document.getElementById("CPF");
+var cpf = document.getElementById("CPF");
 var nCarteirinha = document.getElementById("num_carteirinha");
 var dtCadastro = document.getElementById("dt_cadastro");
 var dtNascimento = document.getElementById("dt_nascimento");
@@ -125,14 +122,8 @@ function validar() {
     if (logradouro.value = "")
         $(campoMensagem).append("O logradouro é obrigatório! Por favor preencha esse campo.");
 
-    if (numero.value = "")
-        $(campoMensagem).append("O número é obrigatório! Por favor preencha esse campo.");
-
     if (bairro.value = "")
         $(campoMensagem).append("O bairro é obrigatório! Por favor preencha esse campo.");
-
-    if (cidade.value = "")
-        $(campoMensagem).append("A cidade é obrigatória! Por favor preencha esse campo.");
 }
 
 //Data de Cadastro
@@ -144,4 +135,22 @@ document.getElementById("dt_cadastro").value = data;
 function gerarNumCarteirinha() {
     nCarteirinha.value = Math.round((10000000 + Math.random() * 99999999));
     // nCarteirinha.value = (Math.random() * 9);
+}
+
+function salvar(){
+    validar();
+
+    var dados = $('form-paciente').serialize();
+    console.log(dados);
+    
+    $.ajax({
+        url: 'https://localhost:44300/api/Paciente',
+        type: 'POST',
+        data: dados,
+        contentType: "application/x-www-form-urlencoded;charset=UTF-8"
+        }).done(function(result){
+            alert(result);
+        }).fail(function(jqXHR,textStatus,errorThrown){
+            console.log(errorThrown);
+        })
 }

@@ -10,7 +10,7 @@ function pesquisarProcedimento(){
         console.log(buscaProcedimento);
     $.ajax({
         type:'GET',
-        url:'http://localhost:5000/api/Procedimento/ProcedimentoPorNome/'+buscaProcedimento,
+        url:'https://localhost:44300/api/Procedimento/ProcedimentoPorNome/'+buscaProcedimento,
         success: function(retorno){
             console.log(retorno);
             idProcedimento.value = retorno.id_procedimento,
@@ -37,7 +37,7 @@ function preencherProcedimentos(){
 
     $.ajax({
         type:'GET',
-        url:'http://localhost:5000/api/Procedimento',
+        url:'https://localhost:44300/api/Procedimento',
         success: function(retorno){
                 for(i=0; i < retorno.length; i++){
                     var dado = retorno[i];

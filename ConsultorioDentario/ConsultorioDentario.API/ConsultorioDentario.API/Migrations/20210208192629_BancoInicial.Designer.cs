@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ConsultorioDentario.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20200907025315_bancoInitial")]
-    partial class bancoInitial
+    [Migration("20210208192629_BancoInicial")]
+    partial class BancoInicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -39,15 +39,6 @@ namespace ConsultorioDentario.API.Migrations
 
                     b.Property<DateTime>("dt_consulta")
                         .HasColumnType("datetime2");
-
-                    b.Property<int>("id_dentista")
-                        .HasColumnType("int");
-
-                    b.Property<int>("id_paciente")
-                        .HasColumnType("int");
-
-                    b.Property<int>("id_procedimento")
-                        .HasColumnType("int");
 
                     b.Property<string>("observacao")
                         .HasColumnType("nvarchar(max)");

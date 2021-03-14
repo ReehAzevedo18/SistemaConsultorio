@@ -15,7 +15,7 @@ function pesquisarDentista(){
         
     $.ajax({
         type:'GET',
-        url:'http://localhost:5000/api/Dentista/DentistaPorNome/'+buscaDentista,
+        url:'https://localhost:44300/api/Dentista/DentistaPorNome/'+buscaDentista,
         success: function(retorno){
             idDentista.value = retorno.id_dentista,
             dentista.value = retorno.nome,
@@ -52,7 +52,7 @@ function preencherDentistas(){
 
     $.ajax({
         type:'GET',
-        url:'http://localhost:5000/api/Dentista',
+        url:'https://localhost:44300/api/Dentista',
         success: function(retorno){
                 for(i=0; i < retorno.length; i++){
                     var dado = retorno[i];

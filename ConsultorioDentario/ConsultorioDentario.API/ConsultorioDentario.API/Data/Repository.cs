@@ -17,7 +17,8 @@ namespace ConsultorioDentario.API.Data
         #region CRUD
         public void Inserir<T>(T entity) where T : class
         {
-             _context.Add(entity);
+          
+         _context.Add(entity);
         }
 
         public void Alterar<T>(T entity) where T : class
@@ -32,6 +33,7 @@ namespace ConsultorioDentario.API.Data
         
         public bool Salvar()
         {
+            
            return (_context.SaveChanges() > 0);
         }
         #endregion
@@ -51,13 +53,12 @@ namespace ConsultorioDentario.API.Data
           return query.FirstOrDefault();
         }
 
-        public Paciente GetPacientePorNome(string nome)
+        public Paciente GetPacientePorNome(string nomePaciente)
         {
-            IQueryable<Paciente> query = _context.Paciente.Where(p => p.Nome.Contains(nome));
+            IQueryable<Paciente> query = _context.Paciente.Where(p => p.Nome.Contains(nomePaciente));
 
-
-            foreach(var q in query){
-              if(q.Nome.Contains(nome)){
+            foreach (var q in query){
+              if(q.Nome.Contains(nomePaciente)){
                  query = query.Include(a => a.Endereco);
                 
               }

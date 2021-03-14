@@ -1,19 +1,22 @@
 using System;
+using System.Collections.Generic;
 using ConsultorioDentario.API.Data;
 using ConsultorioDentario.API.Models;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ConsultorioDentario.API.Controllers
 {
+    [EnableCors]
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/[controller]/")]
     public class PacienteController : ControllerBase
     {
         private readonly IRepository _repo;
         public PacienteController(IRepository repo){
             _repo = repo;
         }
-
+      
         [HttpGet]
         public IActionResult Get(){
             try{
@@ -28,6 +31,7 @@ namespace ConsultorioDentario.API.Controllers
             }
         }
 
+      
         [HttpGet("PacientePorID/{idPaciente}")]
         public IActionResult GetPacientePorID(int idPaciente){
              try
@@ -44,41 +48,49 @@ namespace ConsultorioDentario.API.Controllers
             }
         }
 
+
+
+
         [HttpGet("PacientePorNome/{nomePaciente}")]
         public IActionResult GetPacientePorNome(string nomePaciente){
              try
             {
                 var result = _repo.GetPacientePorNome(nomePaciente);
-                
-                if(result != null)
+
+                if (result != null)
                     return Ok(result);
                 return BadRequest("Paciente não encontrado. Tente novamente!");
-            
-            }catch(Exception ex){
+
+            }
+            catch(Exception ex){
                 
                 return BadRequest($"Erro: {ex.Message}");
             }
+
+
+            
+
         }
 
         [HttpPost]
-        public IActionResult post(Paciente paciente){
+        public  IActionResult post(Paciente paciente){
              try
             {
-              _repo.Inserir(paciente);
-              
-              if(_repo.Salvar()){
-                  return Ok(new {message = "Paciente cadastrado com sucesso!"});
-              }
-
-            }catch(Exception ex){
-                
+                 _repo.Inserir(paciente);
+            }
+            catch(Exception ex){
                 return BadRequest($"Erro: {ex.Message}");
+            }
+
+            
+            if (_repo.Salvar())
+            {
+                return Ok(new { message = "Paciente cadastrado com sucesso!" });
             }
 
             return BadRequest();
         }
-    
-    
+
         [HttpPut("{idPaciente}")]
         public IActionResult put(int idPaciente, Paciente paciente){
              try
@@ -100,7 +112,8 @@ namespace ConsultorioDentario.API.Controllers
 
             return BadRequest();
         }
-    
+
+     
         [HttpDelete("{idPaciente}")]
         public IActionResult delete(int idPaciente){
              try

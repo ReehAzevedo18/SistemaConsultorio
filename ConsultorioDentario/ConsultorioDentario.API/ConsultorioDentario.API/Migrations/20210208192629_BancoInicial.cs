@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ConsultorioDentario.API.Migrations
 {
-    public partial class bancoInitial : Migration
+    public partial class BancoInicial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -93,11 +93,8 @@ namespace ConsultorioDentario.API.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     dt_consulta = table.Column<DateTime>(type: "datetime2", nullable: false),
                     observacao = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    id_dentista = table.Column<int>(type: "int", nullable: false),
                     Dentistaid_dentista = table.Column<int>(type: "int", nullable: true),
-                    id_paciente = table.Column<int>(type: "int", nullable: false),
                     Pacienteid_paciente = table.Column<int>(type: "int", nullable: true),
-                    id_procedimento = table.Column<int>(type: "int", nullable: false),
                     Procedimentoid_procedimento = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>

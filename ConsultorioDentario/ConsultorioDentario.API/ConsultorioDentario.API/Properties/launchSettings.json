@@ -12,7 +12,7 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "weatherforecast",
+      "launchUrl": "api/Paciente",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
@@ -20,8 +20,9 @@
     "ConsultorioDentario.API": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "weatherforecast",
-      "applicationUrl": "http://localhost:5000",
+      "launchUrl": "api/Paciente",
+      "applicationUrl": "http://localhost:39971",
+      "sslPort": 44300,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
