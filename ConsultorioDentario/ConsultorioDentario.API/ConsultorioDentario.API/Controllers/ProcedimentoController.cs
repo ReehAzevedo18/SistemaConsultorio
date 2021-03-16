@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace ConsultorioDentario.API.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/[controller]/")]
     public class ProcedimentoController : ControllerBase
     {
         private readonly IRepository _repo;

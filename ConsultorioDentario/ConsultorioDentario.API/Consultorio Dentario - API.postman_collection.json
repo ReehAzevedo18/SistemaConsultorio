@@ -1,0 +1,667 @@
+{
+	"info": {
+		"_postman_id": "ff61799a-40e5-479e-a578-c24211471511",
+		"name": "Consultorio Dentario - API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Paciente",
+			"item": [
+				{
+					"name": "Pacientes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44300/api/Paciente",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44300",
+							"path": [
+								"api",
+								"Paciente"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Paciente por ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"followOriginalHttpMethod": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "idPaciente",
+								"value": "1",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "idPaciente",
+									"value": "1",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "https://localhost:44300/api/Paciente/PacientePorID/2",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44300",
+							"path": [
+								"api",
+								"Paciente",
+								"PacientePorID",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Paciente por nome",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "nome",
+									"value": "Rosalene",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "https://localhost:44300/api/Paciente/PacientePorNome/Rosalene",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44300",
+							"path": [
+								"api",
+								"Paciente",
+								"PacientePorNome",
+								"Rosalene"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"nome\": \"Isaias Alves\",\r\n        \"cpf\": \"638.894.837-55\",\r\n        \"dt_nascimento\": \"1950-04-04T00:00:00\",\r\n        \"numCarteira\": \"094839\",\r\n        \"dt_cadastro\": \"2021-03-14T16:36:00.37\",\r\n        \"endereco\": {\r\n        \"logradouro\": \"Rua Silva Cardosinho,\",\r\n        \"num\": 57,\r\n        \"complemento\": \"- apt 205\",\r\n        \"bairro\": \"Bangu\",\r\n        \"cidade\": \"Rio de Janeiro\",\r\n        \"dentista\": null\r\n        },\r\n        \"consulta\": null\r\n    }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44300/api/Paciente/9",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44300",
+							"path": [
+								"api",
+								"Paciente",
+								"9"
+							],
+							"query": [
+								{
+									"key": "idPaciente",
+									"value": "9",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Excluir",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44300/api/Paciente/10",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44300",
+							"path": [
+								"api",
+								"Paciente",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"nome\": \"Isaias Azevedo\",\r\n        \"cpf\": \"638.894.837-55\",\r\n        \"dt_nascimento\": \"1950-04-04T00:00:00\",\r\n        \"numCarteira\": \"094839\",\r\n        \"dt_cadastro\": \"2021-03-14T16:36:00.37\",\r\n        \"endereco\": {\r\n        \"logradouro\": \"Rua Silva Cardoso,\",\r\n        \"num\": 57,\r\n        \"complemento\": \"- apt 205\",\r\n        \"bairro\": \"Bangu\",\r\n        \"cidade\": \"Rio de Janeiro\",\r\n        \"dentista\": null\r\n        },\r\n        \"consulta\": null\r\n    }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44300/api/Paciente",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44300",
+							"path": [
+								"api",
+								"Paciente"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Dentista",
+			"item": [
+				{
+					"name": "Dentistas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44300/api/Dentista",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44300",
+							"path": [
+								"api",
+								"Dentista"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Dentista por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44300/api/Dentista/DentistaPorID/1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44300",
+							"path": [
+								"api",
+								"Dentista",
+								"DentistaPorID",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Dentista por nome",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44300/api/Dentista/DentistaPorNome/Claudia",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44300",
+							"path": [
+								"api",
+								"Dentista",
+								"DentistaPorNome",
+								"Claudia"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"nome\": \"Dra. Claudia Ferreira\",\r\n        \"cpf\": \"770.991.594-96\",\r\n        \"matricula\": \"23546791\",\r\n        \"endereco\": {\r\n        \"logradouro\": \"Av. Paulista\",\r\n        \"num\": 400,\r\n        \"complemento\": \"sala 400\",\r\n        \"bairro\": \"Zona Leste\",\r\n        \"cidade\": \"São Paulo\"\r\n        },\r\n        \"consulta\": null\r\n    }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44300/api/Dentista",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44300",
+							"path": [
+								"api",
+								"Dentista"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"nome\": \"Dra. Claudia Cristiane Cristina Josi\",\r\n        \"cpf\": \"770.991.594-96\",\r\n        \"matricula\": \"23546791\",\r\n        \"endereco\": {\r\n        \"logradouro\": \"Av. Paulista\",\r\n        \"num\": 400,\r\n        \"complemento\": \"sala 400\",\r\n        \"bairro\": \"Zona Leste\",\r\n        \"cidade\": \"São Paulo\"\r\n        },\r\n        \"consulta\": null\r\n    }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44300/api/Dentista/2",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44300",
+							"path": [
+								"api",
+								"Dentista",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Excluir",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44300/api/Dentista/3",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44300",
+							"path": [
+								"api",
+								"Dentista",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Procedimento",
+			"item": [
+				{
+					"name": "Procedimentos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44300/api/Procedimento",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44300",
+							"path": [
+								"api",
+								"Procedimento"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Procedimento por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44300/api/Procedimento/ProcedimentoPorID/1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44300",
+							"path": [
+								"api",
+								"Procedimento",
+								"ProcedimentoPorID",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Procedimento por Nome",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44300/api/Procedimento/ProcedimentoPorNome/Limpeza",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44300",
+							"path": [
+								"api",
+								"Procedimento",
+								"ProcedimentoPorNome",
+								"Limpeza"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\r\n        \"nome\": \"Aparelho dentário\",\r\n        \"duracao\": \"180\",\r\n        \"valor\": \"100,00\",\r\n        \"consulta\": null\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44300/api/Procedimento",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44300",
+							"path": [
+								"api",
+								"Procedimento"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\r\n        \"nome\": \"Aparelho de dente\"\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44300/api/Procedimento/3",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44300",
+							"path": [
+								"api",
+								"Procedimento",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Excluir",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44300/api/Procedimento/4",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44300",
+							"path": [
+								"api",
+								"Procedimento",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Consulta",
+			"item": [
+				{
+					"name": "Consultas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44300/api/Consulta",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44300",
+							"path": [
+								"api",
+								"Consulta"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consulta por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44300/api/ConsultaPorID/1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44300",
+							"path": [
+								"api",
+								"ConsultaPorID",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consulta por dentista",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44300/api/ConsultaPorDentista/Claudia",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44300",
+							"path": [
+								"api",
+								"ConsultaPorDentista",
+								"Claudia"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consulta por paciente",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44300/api/ConsultaPorPaciente/Rosalene",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44300",
+							"path": [
+								"api",
+								"ConsultaPorPaciente",
+								"Rosalene"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"dt_consulta\": \"2021-03-15T21:17:00\",\r\n        \"observacao\": \"Cliente chato\",\r\n        \"Dentista\": {\r\n            \"id_dentista\": 2\r\n        },\r\n        \"Paciente\": {\r\n            \"id_paciente\": 1\r\n        },\r\n         \"Procedimento\": {\r\n            \"id_procedimento\": 3\r\n        }\r\n    }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44300/api/Consulta",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44300",
+							"path": [
+								"api",
+								"Consulta"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"observacao\": \"Cliente bonzinho\",\r\n    }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44300/api/Consulta/1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44300",
+							"path": [
+								"api",
+								"Consulta",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Excluir",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44300/api/Consulta/2",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44300",
+							"path": [
+								"api",
+								"Consulta",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

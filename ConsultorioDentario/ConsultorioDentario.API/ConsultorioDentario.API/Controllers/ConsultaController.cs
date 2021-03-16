@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace ConsultorioDentario.API.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/[controller]/")]
     public class ConsultaController : ControllerBase
     {
                 private readonly IRepository _repo;
@@ -44,21 +44,38 @@ namespace ConsultorioDentario.API.Controllers
             }
         }
 
-        //  [HttpGet("ConsultaPorNome/{nomeConsulta}")]
-        // public IActionResult GetConsultaPorNome(string nomeConsulta){
-        //      try
-        //     {
-        //         var result = _repo.GetConsultaPorNome(nomeConsulta);
-                
-        //         if(result != null)
-        //             return Ok(result);
-        //         return BadRequest("Consulta não encontrada. Tente novamente!");
-            
-        //     }catch(Exception ex){
-                
-        //         return BadRequest($"Erro: {ex.Message}");
-        //     }
-        // }
+        //[HttpGet("ConsultaPorDentista/{nomeDentista}")]
+        //public IActionResult GetConsultaPorDentista(string nomeDentista)
+        //{
+        //    try
+        //    {
+        //        var result = _repo.GetConsultaPorNome(nomeDentista);
+
+        //        if (result != null)
+        //            return Ok(result);
+        //        return BadRequest("Consulta não encontrada. Tente novamente!");
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+
+        //        return BadRequest($"Erro: {ex.Message}");
+        //    }
+        //}
+
+        //[HttpGet("ConsultaPorPaciente/{nomePaciente}")]
+        //public IActionResult GetConsultaPorPaciente(string nomePaciente)
+        //{
+        //    try
+        //    {
+ 
+        //    }
+        //    catch (Exception ex)
+        //    {
+
+        //        return BadRequest($"Erro: {ex.Message}");
+        //    }
+        //}
 
         [HttpPost]
         public IActionResult post(Consulta consulta){
