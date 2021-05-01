@@ -54,7 +54,7 @@ function limparFormPaciente(){
 
 
 function formatarData(){
-    d=new Date(dtCadastro);
+    d=new Date(dt_cadastro);
     dt=d.getDate();
     mn=d.getMonth();
     mn++;
@@ -91,9 +91,10 @@ function preencherClientes(){
 
 // TELA DE CADASTRO
 //Campos do formulário
-var nomeP = document.getElementById("nome");
+
+var nomeP = document.getElementById("Nome");
 var cpf = document.getElementById("CPF");
-var nCarteirinha = document.getElementById("num_carteirinha");
+var nCarteirinha = document.getElementById("numCarteira");
 var dtCadastro = document.getElementById("dt_cadastro");
 var dtNascimento = document.getElementById("dt_nascimento");
 
@@ -103,27 +104,11 @@ var complemento = document.getElementById("complemento");
 var bairro = document.getElementById("bairro");
 var cidade = document.getElementById("cidade");
 
-var idTab = document.getElementById("idTabela");
-var nomeTab = document.getElementById("nomeTabela");
-var cpfTab = document.getElementById("cpfTabela");
-
 // Validacao dos formularios
 function validar() {
     var campoMensagem = document.getElementById("mensagem-info");
-    if (nome.value == "")
+    if (nomeP.value == "" || nomeP.value == null)
         $(campoMensagem).append("O nome é obrigatório! Por favor preencha esse campo.");
-
-    if (CPF.length > 14)
-        $(campoMensagem).append("CPF incorreto! Por favor preencha com pontos e traço.");
-
-    if (nCarteirinha.value == "")
-        $(campoMensagem).append("O número da carteirinha é obrigatório! Por favor preencha esse campo.");
-
-    if (logradouro.value = "")
-        $(campoMensagem).append("O logradouro é obrigatório! Por favor preencha esse campo.");
-
-    if (bairro.value = "")
-        $(campoMensagem).append("O bairro é obrigatório! Por favor preencha esse campo.");
 }
 
 //Data de Cadastro
@@ -132,25 +117,102 @@ var data = dataAtual.getFullYear().toString() + "-0" + dataAtual.getMonth().toSt
 document.getElementById("dt_cadastro").value = data;
 
 //Gerando número da carteira do paciente
-function gerarNumCarteirinha() {
+ function gerarNumCarteirinha() {
     nCarteirinha.value = Math.round((10000000 + Math.random() * 99999999));
     // nCarteirinha.value = (Math.random() * 9);
 }
 
 function salvar(){
-    validar();
+  // validar(); 
+    //  e.preventDefault();
+      //var URL = "https://localhost:44300/api/Paciente";
+      if(isValidCPF(cpf)== true){
+          console.log("CPF válido");
+          var CPFValidado = cpf;
+      }
 
-    var dados = $('form-paciente').serialize();
+      var dados = ({
+        Nome: nomeP.value,
+        CPF: CPFValidado,
+        numCarteira: nCarteirinha.value,
+        dt_nascimento: dt_nascimento.value,
+        dt_cadastro: dt_cadastro.value,
+        endereco: {
+            logradouro: logradouro.value,
+            num: num.value,
+            complemento: complemento.value,
+            bairro: bairro.value,
+            cidade: cidade.value
+        }
+    })
     console.log(dados);
-    
-    $.ajax({
-        url: 'https://localhost:44300/api/Paciente',
-        type: 'POST',
-        data: dados,
-        contentType: "application/x-www-form-urlencoded;charset=UTF-8"
-        }).done(function(result){
-            alert(result);
-        }).fail(function(jqXHR,textStatus,errorThrown){
-            console.log(errorThrown);
-        })
+
+
+      /* axios.post(URL, {
+         
+      })
+      .then(function (response) {
+            alert(response.data.message);
+      })
+      .catch(function (err) {
+        alert("Ocorreu um erro ao realizar o cadasro! Entre em contato com o suporte.")
+        console.log(err);
+      }); */
+}
+
+function oPaciente(){
+    var URL = "https://localhost:44300/api/Paciente";
+
+    axios.get(URL)
+    .then(function (response) {    
+            for(i=0; i < response.data.length; i++){
+                var dado = response.data[i];
+              
+                    $("#pacienteCadastrados tbody").append(
+                        "<tr>"+
+                        "<td>"+dado.id_paciente+"</td>"+
+                        "<td>"+dado.nome+"</td>"+
+                        "<td>"+dado.cpf+"</td>"+
+                   +"</tr>");
+        } 
+    })
+    .catch(function (err) {
+      console.log(err);
+    })    
+      
+}
+
+function isValidCPF(cpf) {
+    if (typeof cpf !== "string") return false
+    cpf = cpf.replace(/[\s.-]*/igm, '')
+    if (
+        !cpf ||
+        cpf.length != 11 ||
+        cpf == "00000000000" ||
+        cpf == "11111111111" ||
+        cpf == "22222222222" ||
+        cpf == "33333333333" ||
+        cpf == "44444444444" ||
+        cpf == "55555555555" ||
+        cpf == "66666666666" ||
+        cpf == "77777777777" ||
+        cpf == "88888888888" ||
+        cpf == "99999999999" 
+    ) {
+        return false
+    }
+    var soma = 0
+    var resto
+    for (var i = 1; i <= 9; i++) 
+        soma = soma + parseInt(cpf.substring(i-1, i)) * (11 - i)
+    resto = (soma * 10) % 11
+    if ((resto == 10) || (resto == 11))  resto = 0
+    if (resto != parseInt(cpf.substring(9, 10)) ) return false
+    soma = 0
+    for (var i = 1; i <= 10; i++) 
+        soma = soma + parseInt(cpf.substring(i-1, i)) * (12 - i)
+    resto = (soma * 10) % 11
+    if ((resto == 10) || (resto == 11))  resto = 0
+    if (resto != parseInt(cpf.substring(10, 11) ) ) return false
+    return true
 }

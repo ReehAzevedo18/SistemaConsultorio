@@ -12,7 +12,7 @@ namespace ConsultorioDentario.API.Models
         public int id_endereco {get; set;}
         public virtual Endereco Endereco {get; set;}
 
-        public ICollection<Consulta> Consulta {get; set;}
+        public virtual ICollection<Consulta> Consultas { get; set; }
 
     }
 }

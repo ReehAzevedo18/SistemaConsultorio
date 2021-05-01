@@ -43,5 +43,12 @@ select * from Consulta
 insert into Consulta (dt_consulta, observacao, Dentistaid_dentista, Pacienteid_paciente, Procedimentoid_procedimento)
 values ('2020-03-06', 'Primeira consulta', 1, 1, 1)
 
-insert into Consulta (dt_consulta, observacao, Dentistaid_dentista, Pacienteid_paciente, Procedimentoid_procedimento)
-values ('2020-11-15', 'Tratamento', 2, 2, 2)
+insert into Consulta (dt_consulta, observacao, id_paciente, id_procedimento, id_dentista)
+values (GETDATE(), 'Iniciando o tratamento', 1, 1, 1)
+
+select * from Consulta c 
+join Paciente p on c.id_paciente = p.id_paciente
+join Dentista d on c.id_dentista = d.id_dentista
+join Procedimento pro on c.id_procedimento = pro.id_procedimento
+join Endereco e on p.id_endereco = e.id_endereco
+where p.Nome = 'Jonas Cardoso'

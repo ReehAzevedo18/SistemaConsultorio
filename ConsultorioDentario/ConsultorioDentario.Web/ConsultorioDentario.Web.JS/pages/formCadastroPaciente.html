@@ -72,94 +72,89 @@
 
             <div class="row">
                 <div class="col-6 mt-2">
-                    <form id="form-paciente" method="POST">
+                    <form id="cadastrar" method="POST">
                         <div class="form-group">
                             <label>Nome</label>
-                            <input type="nome" class="form-control" id="nome" required>
+                            <input type="nome" class="form-control" id="Nome" name="Nome">
                             <small class="form-text text-danger" id="mensagem-info"></small>
                         </div>
                         <div class="row">
                             <div class="col">
                                 <label>CPF</label>
-                                <input type="text" class="form-control" id="CPF" onfocus="gerarNumCarteirinha()" required>
-                                <small class="form-text text-danger" id="mensagem-info"></small>
+                                <input type="text" class="form-control" id="CPF" name="CPF" onfocus="gerarNumCarteirinha()" required>
                             </div>
                             <div class="col">
                                 <label>N° da carteirinha</label>
-                                <input type="number" class="form-control" id="num_carteirinha" maxlength="6" disabled>
+                                <input type="number" class="form-control" id="numCarteira" name="numCarteira" disabled>
                                 <small class="form-text text-danger" id="mensagem-info"></small>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
                                 <label>Data de Nascimento</label>
-                                <input type="date" class="form-control" id="dt_nascimento">
+                                <input type="date" class="form-control" id="dt_nascimento" name="dt_nascimento">
                             </div>
                             <div class="col">
                                 <label>Data de Cadastro</label>
-                                <input type="date" class="form-control" id="dt_cadastro" min="1900-01-01" readonly>
+                                <input type="text" class="form-control" id="dt_cadastro" name="dt_cadastro" min="1900-01-01" readonly>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-8">
                                 <label>Logradouro</label>
-                                <input type="text" class="form-control" id="logradouro">
-                                <small class="form-text text-danger" id="mensagem-info"></small>
+                                <input type="text" class="form-control" id="logradouro" name="logradouro" required>
                             </div>
                             <div class="col-4">
                                 <label>Número</label>
-                                <input type="number" class="form-control" id="num" maxlength="6">
-                                <small class="form-text text-danger" id="mensagem-info"></small>
+                                <input type="number" class="form-control" id="num" maxlength="6" name="num">
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-4">
                                 <label>Complemento</label>
-                                <input type="text" class="form-control" id="complemento">
+                                <input type="text" class="form-control" id="complemento" name="complemento">
                             </div>
                             <div class="col-4">
                                 <label>Bairro</label>
-                                <input type="text" class="form-control" id="bairro">
-                                <small class="form-text text-danger" id="mensagem-info"></small>
+                                <input type="text" class="form-control" id="bairro" name="bairro" required>
+                            
                             </div>
                             <div class="col-4">
                                 <label>Cidade</label>
-                                <input type="text" class="form-control" id="cidade">
-                                <small class="form-text text-danger" id="mensagem-info"></small>
+                                <input type="text" class="form-control" id="cidade" name="cidade" required>
+                                
                             </div>
-
                         </div>
                         <br>
                         <button type="button" class="btn btn-danger btn-lg float-right ml-2" onclick="pegarDados()">Limpar</button>
                         <button type="button" class="btn btn-info btn-lg float-right" onclick="salvar()">Salvar</button><br><br>
+                        <button type="button" class="btn btn-info btn-lg float-right" onclick="oPaciente()">Carregar página</button><br><br>
                     </form>
-                </div>
 
-                <div class="col-6 mt-2">
-                    <table class="table" id="tabPaciente">
+                  
+                  </div>
+                    <div class="col-6 mt-2">
+                        <div id="teste">
+                        </div>
+                      <table class="table" id="pacienteCadastrados">
                         <thead class="thead-dark">
                             <tr>
-                                <th scope="col">Id</th>
+                                <th scope="col">ID</th>
                                 <th scope="col">Nome</th>
                                 <th scope="col">CPF</th>
-                                <th scope="col">Ações</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                            <!-- <tr>
                                 <td>
                                     <button type="button" class="btn btn-info btn-sm" onclick="preencherClientes()">Editar</button>
                                     <button type="button" class="btn btn-danger btn-sm">Excluir</button>
                                 </td>
-                            </tr>
+                            </tr> -->
                         </tbody>
                     </table>
-
                 </div>
             </div>
         </div>
@@ -256,9 +251,9 @@
 
     
     <script type="text/javascript" src="../js/Paciente.js"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js" type="text/javascript"></script>
-    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     

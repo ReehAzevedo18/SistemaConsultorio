@@ -7,9 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ConsultorioDentario.API.Controllers
 {
-    [EnableCors]
+
+    [Route("api/[controller]")]
     [ApiController]
-    [Route("api/[controller]/")]
     public class PacienteController : ControllerBase
     {
         private readonly IRepository _repo;
@@ -46,6 +46,18 @@ namespace ConsultorioDentario.API.Controllers
                 
                 return BadRequest($"Erro: {ex.Message}");
             }
+        }
+
+        [HttpGet("IDPacienteParaConsulta/{idPaciente}")]
+        public int GetIDPacienteParaConsulta(int idPaciente)
+        {
+            int vInicial = 0;
+          
+                var result = _repo.GetPacientePorID(idPaciente);
+
+                if (result != null)
+                    return result.id_paciente;
+                return vInicial;
         }
 
 

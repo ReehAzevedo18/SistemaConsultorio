@@ -10,6 +10,6 @@ namespace ConsultorioDentario.API.Models
         public int duracao {get; set;}
         public string valor {get; set;}
 
-          public ICollection<Consulta> Consulta {get; set;}
+         public virtual ICollection<Consulta> Consultas { get; set; }
     }
 }

@@ -46,28 +46,18 @@ namespace ConsultorioDentario.API.Data
             .WithOne(b => b.Endereco)
             .HasForeignKey<Dentista>(b => b.id_endereco);
 
-            //Relacionamento UM PRA MUITOS
-             modelBuilder.Entity<Paciente>()
-            .HasMany(c => c.Consulta)
-            .WithOne(e => e.Paciente); 
-
-            modelBuilder.Entity<Dentista>()
-            .HasMany(c => c.Consulta)
-            .WithOne(e => e.Dentista); 
-
-            // modelBuilder.Entity<Consulta>()
-            // .HasMany(c => c.Procedimento)
-            // .WithOne(e => e.Consulta);
-
-            modelBuilder.Entity<Procedimento>()
-            .HasMany(c => c.Consulta)
-            .WithOne(e => e.Procedimento); 
-
             #endregion
 
-          
+            //Relacionamento UM PRA MUITOS 
+            modelBuilder.Entity<Consulta>().HasOne(p => p.Paciente)
+            .WithMany(p => p.Consultas).HasForeignKey(p => p.id_paciente);
+
+            modelBuilder.Entity<Consulta>().HasOne(p => p.Procedimento)
+            .WithMany(p => p.Consultas).HasForeignKey(p => p.id_procedimento);
+
+
         }
 
-        
+
     }
 }

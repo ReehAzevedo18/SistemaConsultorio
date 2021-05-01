@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ConsultorioDentario.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20210208192629_BancoInicial")]
-    partial class BancoInicial
+    [Migration("20210428233802_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -31,14 +31,17 @@ namespace ConsultorioDentario.API.Migrations
                     b.Property<int?>("Dentistaid_dentista")
                         .HasColumnType("int");
 
-                    b.Property<int?>("Pacienteid_paciente")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("Procedimentoid_procedimento")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("dt_consulta")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("id_dentista")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("id_paciente")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("id_procedimento")
+                        .HasColumnType("int");
 
                     b.Property<string>("observacao")
                         .HasColumnType("nvarchar(max)");
@@ -47,9 +50,9 @@ namespace ConsultorioDentario.API.Migrations
 
                     b.HasIndex("Dentistaid_dentista");
 
-                    b.HasIndex("Pacienteid_paciente");
+                    b.HasIndex("id_paciente");
 
-                    b.HasIndex("Procedimentoid_procedimento");
+                    b.HasIndex("id_procedimento");
 
                     b.ToTable("Consulta");
                 });
@@ -121,11 +124,11 @@ namespace ConsultorioDentario.API.Migrations
                     b.Property<string>("Nome")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("dt_cadastro")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("dt_cadastro")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("dt_nascimento")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("dt_nascimento")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("id_endereco")
                         .HasColumnType("int");
@@ -165,16 +168,16 @@ namespace ConsultorioDentario.API.Migrations
             modelBuilder.Entity("ConsultorioDentario.API.Models.Consulta", b =>
                 {
                     b.HasOne("ConsultorioDentario.API.Models.Dentista", "Dentista")
-                        .WithMany("Consulta")
+                        .WithMany("Consultas")
                         .HasForeignKey("Dentistaid_dentista");
 
                     b.HasOne("ConsultorioDentario.API.Models.Paciente", "Paciente")
-                        .WithMany("Consulta")
-                        .HasForeignKey("Pacienteid_paciente");
+                        .WithMany("Consultas")
+                        .HasForeignKey("id_paciente");
 
                     b.HasOne("ConsultorioDentario.API.Models.Procedimento", "Procedimento")
-                        .WithMany("Consulta")
-                        .HasForeignKey("Procedimentoid_procedimento");
+                        .WithMany("Consultas")
+                        .HasForeignKey("id_procedimento");
                 });
 
             modelBuilder.Entity("ConsultorioDentario.API.Models.Dentista", b =>

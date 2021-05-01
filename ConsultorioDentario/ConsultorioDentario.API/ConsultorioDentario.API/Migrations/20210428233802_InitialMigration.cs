@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ConsultorioDentario.API.Migrations
 {
-    public partial class BancoInicial : Migration
+    public partial class InitialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -69,9 +69,9 @@ namespace ConsultorioDentario.API.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Nome = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CPF = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    dt_nascimento = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    dt_nascimento = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     numCarteira = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    dt_cadastro = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    dt_cadastro = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     id_endereco = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -93,9 +93,10 @@ namespace ConsultorioDentario.API.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     dt_consulta = table.Column<DateTime>(type: "datetime2", nullable: false),
                     observacao = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Dentistaid_dentista = table.Column<int>(type: "int", nullable: true),
-                    Pacienteid_paciente = table.Column<int>(type: "int", nullable: true),
-                    Procedimentoid_procedimento = table.Column<int>(type: "int", nullable: true)
+                    id_paciente = table.Column<int>(type: "int", nullable: true),
+                    id_procedimento = table.Column<int>(type: "int", nullable: true),
+                    id_dentista = table.Column<int>(type: "int", nullable: false),
+                    Dentistaid_dentista = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -107,14 +108,14 @@ namespace ConsultorioDentario.API.Migrations
                         principalColumn: "id_dentista",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Consulta_Paciente_Pacienteid_paciente",
-                        column: x => x.Pacienteid_paciente,
+                        name: "FK_Consulta_Paciente_id_paciente",
+                        column: x => x.id_paciente,
                         principalTable: "Paciente",
                         principalColumn: "id_paciente",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Consulta_Procedimento_Procedimentoid_procedimento",
-                        column: x => x.Procedimentoid_procedimento,
+                        name: "FK_Consulta_Procedimento_id_procedimento",
+                        column: x => x.id_procedimento,
                         principalTable: "Procedimento",
                         principalColumn: "id_procedimento",
                         onDelete: ReferentialAction.Restrict);
@@ -126,14 +127,14 @@ namespace ConsultorioDentario.API.Migrations
                 column: "Dentistaid_dentista");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Consulta_Pacienteid_paciente",
+                name: "IX_Consulta_id_paciente",
                 table: "Consulta",
-                column: "Pacienteid_paciente");
+                column: "id_paciente");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Consulta_Procedimentoid_procedimento",
+                name: "IX_Consulta_id_procedimento",
                 table: "Consulta",
-                column: "Procedimentoid_procedimento");
+                column: "id_procedimento");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Dentista_id_endereco",

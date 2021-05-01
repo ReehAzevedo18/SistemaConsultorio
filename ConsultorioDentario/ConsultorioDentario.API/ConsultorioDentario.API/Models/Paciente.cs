@@ -10,18 +10,18 @@ namespace ConsultorioDentario.API.Models
 
         public string Nome {get; set;}
         public string CPF {get; set;}
-        public DateTime dt_nascimento {get; set;}
+        public string dt_nascimento {get; set;}
         public string numCarteira {get; set;}
-        public DateTime dt_cadastro {get; set;}
+        public string dt_cadastro {get; set;}
 
        
         public int id_endereco {get; set;}
         public virtual Endereco Endereco {get; set;}
 
-        public ICollection<Consulta> Consulta {get; set;}
+        public virtual ICollection<Consulta> Consultas {get; set;}
 
 
-
+        
 
 
 

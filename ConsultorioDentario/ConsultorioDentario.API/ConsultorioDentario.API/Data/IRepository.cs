@@ -14,6 +14,8 @@ namespace ConsultorioDentario.API.Data
         #region Classe Paciente
          Paciente[] GetPacientes();
          Paciente GetPacientePorID(int idPaciente);
+
+         //int GetIDPacienteParaConsulta(int idPaciente);
          Paciente GetPacientePorNome(string nomePaciente);
          #endregion
     

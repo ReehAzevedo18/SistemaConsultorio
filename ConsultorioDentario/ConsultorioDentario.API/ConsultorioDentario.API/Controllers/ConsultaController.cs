@@ -81,6 +81,8 @@ namespace ConsultorioDentario.API.Controllers
         public IActionResult post(Consulta consulta){
              try
             {
+                //consulta.Paciente.id_paciente = pC.GetIDPacienteParaConsulta(idPaciente);
+
               _repo.Inserir(consulta);
               
               if(_repo.Salvar()){
