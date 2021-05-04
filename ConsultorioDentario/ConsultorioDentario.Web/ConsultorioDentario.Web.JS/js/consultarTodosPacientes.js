@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function(event) {
-    oPaciente();
     preencherClientes()
   });
+  
   
 //Tabela de pacientes
 function preencherClientes(){
@@ -29,5 +29,22 @@ function preencherClientes(){
          } 
     });
 
+}
+
+
+function excluirPaciente(){
+    alert("Entrei")
+    var id = $("#id_paciente").text();
+    console.log(id);
+
+    /* var URL = 'https://localhost:44300/api/Paciente';
+
+    axios.delete(URL + '/' + id)
+    .then(function (response) {
+        console.log(response.data.message)
+    })
+    .catch(function(err) {
+        console.log(err)
+    }) */
 }
 

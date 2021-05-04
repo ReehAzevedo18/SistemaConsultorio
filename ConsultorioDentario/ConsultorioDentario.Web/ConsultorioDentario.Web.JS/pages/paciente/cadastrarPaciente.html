@@ -31,9 +31,9 @@
                           Cadastro
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="../formCadastroPaciente.html">Paciente</a>
-                            <a class="dropdown-item" href="../formCadastroDentista.html">Dentista</a>
-                            <a class="dropdown-item" href="../formCadastroProcedimento.html">Procedimento</a>
+                            <a class="dropdown-item" href="cadastrarPaciente.html">Paciente</a>
+                            <a class="dropdown-item" href="">Dentista</a>
+                            <a class="dropdown-item" href="">Procedimento</a>
                         </div>
                     </li>
                     <li class="nav-item">
@@ -64,50 +64,92 @@
         <div class="container-fluid bg-white" id="container-form">
             <div class="row">
                 <div class="col-12 text-center">
-                    <h1 class="display-4 text-center mt-2">Lista de Pacientes</h1>
+                    <h1 class="display-4 text-center mt-2">Paciente</h1>
                     <hr>
                 </div>
+
             </div>
 
             <div class="row">
-                <div class="col-12 mt-2">
-                    <table class="table" id="tabPaciente">
-                        <thead class="thead-dark">
-                            <tr>
-                                <th scope="col">ID</th>
-                                <th scope="col">Nome</th>
-                                <th scope="col">CPF</th>
-                                <th scope="col">N° Carteira</th>
-                                <th scope="col">Data de Nascimento</th>
-                                <th scope="col">Data de Cadastro</th>
-                                <th scope="col">Exclusão</th>
-                            </tr>
-                       </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
-                    
-                    <nav>
-                        <ul class="pagination pagination-sm justify-content-center">
-                            <li class="page-item disabled">
-                                <span class="page-link">Anterior</span>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item active">
-                                <span class="page-link">2
-                                    <span class="sr-only">(atual)</span>
-                                </span>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">Próximo</a>
-                            </li>
-                        </ul>
-                    </nav>
+                <div class="col-6 mt-2">
+                    <form id="cadastrar" method="POST">
+                        <div class="form-group">
+                            <label>Nome</label>
+                            <input type="nome" class="form-control" id="Nome" name="Nome" required>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label>CPF</label>
+                                <input type="text" class="form-control" id="CPF" name="CPF" onfocus="gerarNumCarteirinha()" oninput="mascara(this)" required>
+                                <small class="form-text text-danger" id="mensagem-info-cpf"></small>
+                            </div>
+                            <div class="col">
+                                <label>N° da carteirinha</label>
+                                <input type="number" class="form-control" id="numCarteira" name="numCarteira" disabled>
+                                <small class="form-text text-danger" id="mensagem-info"></small>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label>Data de Nascimento</label>
+                                <input type="text" class="form-control" id="dt_nascimento" name="dt_nascimento" maxlength="10" onkeypress="mascaraData(this)">
+                            </div>
+                            <div class="col">
+                                <label>Data de Cadastro</label>
+                                <input type="text" class="form-control" id="dt_cadastro" name="dt_cadastro" min="1900-01-01" readonly>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-8">
+                                <label>Logradouro</label>
+                                <input type="text" class="form-control" id="logradouro" name="logradouro" required>
+                            </div>
+                            <div class="col-4">
+                                <label>Número</label>
+                                <input type="number" class="form-control" id="num" maxlength="6" name="num">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-4">
+                                <label>Complemento</label>
+                                <input type="text" class="form-control" id="complemento" name="complemento">
+                            </div>
+                            <div class="col-4">
+                                <label>Bairro</label>
+                                <input type="text" class="form-control" id="bairro" name="bairro" required>
+                            
+                            </div>
+                            <div class="col-4">
+                                <label>Cidade</label>
+                                <input type="text" class="form-control" id="cidade" name="cidade" required>
+                                
+                            </div>
+                        </div>
+                        <br>
+                        <button type="button" class="btn btn-danger btn-lg float-right ml-2" onclick="pegarDados()">Limpar</button>
+                        <button type="button" class="btn btn-info btn-lg float-right" onclick="salvar()">Salvar</button><br><br>
+                    </form>
+
+                  
+                  </div>
+                    <div class="col-6 mt-2">
+                        <table class="table" id="pacienteCadastrados">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Nome</th>
+                                    <th scope="col">CPF</th>
+                                    <th scope="col">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                               
+                            </tbody>
+                        </table>
                 </div>
             </div>
-
-  
         </div>
     </row>
 
@@ -201,7 +243,7 @@
     </row>
 
     
-    <script type="text/javascript" src="../../js/Paciente.js"></script>
+    <script type="text/javascript" src="../../js/cadastrarPaciente.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js" type="text/javascript"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
