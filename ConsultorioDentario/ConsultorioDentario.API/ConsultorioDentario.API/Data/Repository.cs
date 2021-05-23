@@ -23,7 +23,7 @@ namespace ConsultorioDentario.API.Data
 
         public void Alterar<T>(T entity) where T : class
         {
-             _context.Update(entity);
+            _context.Update<T>(entity);
         }
 
         public void Excluir<T>(T entity) where T : class

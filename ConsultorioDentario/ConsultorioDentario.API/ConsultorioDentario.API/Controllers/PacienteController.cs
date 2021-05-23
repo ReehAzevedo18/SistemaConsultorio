@@ -109,15 +109,20 @@ namespace ConsultorioDentario.API.Controllers
             {
                 var result = _repo.GetPacientePorID(idPaciente);
 
-                if(result == null)
+                if (result == null) {
                     return BadRequest("Paciente não encontrado. Tente novamente!");
 
-                _repo.Alterar(paciente);
+                } else
+                {
+                    if(result.id_paciente == paciente.id_paciente)
+                        _repo.Alterar(paciente);
+                   
+                    if (_repo.Salvar())
+                        return Ok(paciente);
 
-                if(_repo.Salvar())
-                    return Ok(paciente);
-              
-            }catch(Exception ex){
+                }
+            }
+            catch(Exception ex){
                 
                 return BadRequest($"Erro: {ex.Message}");
             }

@@ -292,24 +292,6 @@ document.getElementById("btnEditarPaciente").addEventListener("click", function(
     document.getElementById("cidade").disabled = false;
 });
 
-/* function buscarIdPaciente(){
-    var URL = "https://localhost:44300/api/Paciente/PacientePorID";
-    var id = idPaciente.value;
-    var id_convertido = parseInt(id);
-
-    axios.get(URL + '/' + id_convertido)
-        .then(function (response) {
-             if(response.data.id_paciente == id_convertido){
-                 editarPaciente(id_convertido);
-             }else{
-                 alert("Paciente não localizado! Por favor, verifique o nome e tente novamente.")
-             }
-        })
-        .catch(function (err) {
-          console.log(err);
-        })   
-} */
-
 function editarPaciente(){
     URL = "https://localhost:44300/api/Paciente";
     var id = idPaciente.value;
@@ -317,30 +299,54 @@ function editarPaciente(){
 
     if(validaCpfCnpj(CPF.value) == true){
         var CPFValidado = CPF.value;
-        axios
-        .put(+ '/' + id_convertido, {
-            Nome: paciente.value,
-            CPF: CPFValidado,
-            numCarteira: numCarteira.value,
-            dt_nascimento: dtNasc.value,
-            dt_cadastro: dtCadastro.value,
-            endereco: {
-                logradouro: logradouro.value,
-                num: num.value,
-                complemento: complemento.value,
-                bairro: bairro.value,
-                cidade: cidade.value
-            }
-        })
-        .then(function (response) {   
-            alert(response.data.message);        
-        })
-        .catch(function (err) {
-          console.log(err);
-        }) 
+
+    axios
+    .put(URL + '/' + id_convertido,         
+    {
+        id_paciente: id_convertido,
+        Nome: paciente.value,
+        CPF: CPFValidado,
+        numCarteira: numCarteira.value,
+        dt_nascimento: dtNasc.value,
+        dt_cadastro: dtCadastro.value,
+        endereco: {
+            logradouro: logradouro.value,
+            num: num.value,
+            complemento: complemento.value,
+            bairro: bairro.value,
+            cidade: cidade.value,
+            dentista: null
+        },
+        "consulta": null
+    })
+    .then(function (response) {   
+        alert("Paciente alterado com sucesso!");
+
+        for(i=0; i < response.data.length; i++){
+            var dado = response.data[i];
+
+            idPaciente.value = dado.id_paciente,
+            paciente.value = dado.nome,
+            CPF.value = dado.cpf,
+            numCarteira.value = dado.numCarteira,
+            dtNasc.value = dado.dt_nascimento.replace(/(\d*)-(\d*)-(\d*).*/, '$3-$2-$1'),
+            dtCadastro.value = dado.dt_cadastro.replace(/(\d*)-(\d*)-(\d*).*/, '$3-$2-$1'),
+            logradouro.value = dado.endereco.logradouro, 
+            num.value = dado.endereco.num, 
+            complemento.value = dado.endereco.complemento, 
+            bairro.value = dado.endereco.bairro, 
+            cidade.value = dado.endereco.cidade
+        }
+    })
+    .catch(function (err) {
+      console.log(err);
+    })
+      
     }else{
         var msgError = document.getElementById("mensagem-info-cpf");
         $(msgError).append("CPF inválido! Por favor, verifique.");
        return false;  
-}
+    } 
+
+    limparFormPaciente();
 }
